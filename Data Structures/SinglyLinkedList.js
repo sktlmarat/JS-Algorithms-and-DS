@@ -104,13 +104,17 @@ class SinglyLinkedList {
     }
 
     reverse() {
-        
+        var node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        var next;
+        var prev = null;
+        for (let i = 0; i < this.length; i++) {
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
     }
 }
-
-list = new SinglyLinkedList();
-list.push(3)
-list.push(7)
-list.push(4)
-list.push(6)
-console.log(list.get(0));
